@@ -9,8 +9,6 @@ export default function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
 
   function addToCart(id) {
-    console.log("Add to cart");
-    console.log(id);
     setCart((prevCart) => [...prevCart, id]);
   }
 
