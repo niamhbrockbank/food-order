@@ -1,10 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../store/CartContext";
+import { useEffect, useState } from "react";
 import MealItem from "./MealItem";
 
 export default function Meals() {
   const [meals, setMeals] = useState([]);
-  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     async function fetchMeals() {
@@ -23,10 +21,9 @@ export default function Meals() {
 
   return (
     <div id="meals">
-      {meals.map((meal) => {
-        const selected = cart.includes(meal.id);
-        return <MealItem key={meal.id} item={meal} selected={selected} />;
-      })}
+      {meals.map((meal) => (
+        <MealItem key={meal.id} item={meal} />
+      ))}
     </div>
   );
 }
