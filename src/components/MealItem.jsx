@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../store/CartContext";
 
 export default function MealItem({ item }) {
-  const { addToCart, cart, isInCart } = useContext(CartContext);
+  const { addToCart, isInCart } = useContext(CartContext);
 
   const { id, image, name, price, description } = item;
   const alreadyInCart = isInCart(id);

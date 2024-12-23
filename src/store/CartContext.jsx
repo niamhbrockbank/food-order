@@ -14,6 +14,12 @@ export default function CartContextProvider({ children }) {
   }
 
   function isInCart(id) {
+    for (const item of cart) {
+      if (item.id === id) {
+        return true;
+      }
+    }
+
     return false;
   }
 
