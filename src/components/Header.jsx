@@ -6,7 +6,7 @@ export default function Header() {
       <span id="title">
         <img src={diningImg} /> <h1>Food Order</h1>
       </span>
-      <button>Basket</button>
+      <button className="button">Basket</button>
     </div>
   );
 }
