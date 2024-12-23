@@ -5,7 +5,7 @@ export default function MealItem({ item }) {
   const { addToCart, cart } = useContext(CartContext);
 
   const { id, image, name, price, description } = item;
-  const selected = cart.includes(id) || false;
+  const isInCart = cart.includes(id) || false;
 
   return (
     <article className="meal-item">
@@ -14,7 +14,7 @@ export default function MealItem({ item }) {
       <p className="meal-item-price">${price}</p>
       <p className="meal-item-description">{description}</p>
       <span className="meal-item-actions">
-        {!selected ? (
+        {!isInCart ? (
           <button className="button" onClick={() => addToCart(id)}>
             Add to Cart
           </button>
