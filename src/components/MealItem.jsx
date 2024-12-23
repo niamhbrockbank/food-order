@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { CartContext } from "../store/CartContext";
 
-export default function MealItem({ item, selected }) {
-  const { addToCart } = useContext(CartContext);
+export default function MealItem({ item }) {
+  const { addToCart, cart } = useContext(CartContext);
 
   const { id, image, name, price, description } = item;
+  const selected = cart.includes(id) || false;
 
   return (
     <article className="meal-item">
