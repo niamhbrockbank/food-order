@@ -1,10 +1,6 @@
-import { useContext } from "react";
 import diningImg from "../assets/logo.jpg";
-import { CartContext } from "../store/CartContext";
 
-export default function Header() {
-  const { openCartModal } = useContext(CartContext);
-
+export default function Header({ openCartModal }) {
   return (
     <div id="main-header">
       <span id="title">
