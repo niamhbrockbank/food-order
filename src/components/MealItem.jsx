@@ -1,8 +1,8 @@
 export default function MealItem({ item }) {
-  const { img, name, price, description, selected } = item;
+  const { image, name, price, description, selected } = item;
   return (
     <article className="meal-item">
-      <img src={img} />
+      <img src={image} />
       <h3>{name}</h3>
       <p className="meal-item-price">{price}</p>
       <p className="meal-item-description">{description}</p>
