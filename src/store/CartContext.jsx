@@ -9,10 +9,6 @@ export const CartContext = createContext({
 export default function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
 
-  function addToCart(item) {
-    setCart((prevCart) => [...prevCart, item]);
-  }
-
   function isInCart(id) {
     for (const item of cart) {
       if (item.id === id) {
@@ -21,6 +17,26 @@ export default function CartContextProvider({ children }) {
     }
 
     return false;
+  }
+
+  function addToCart(item) {
+    if (isInCart(item.id)) {
+      setCart((prevCart) => {
+        const newCart = prevCart.map((cartItem) => {
+          if (cartItem.id === item.id) {
+            const newQuantity = (cartItem.quantity = cartItem.quantity + 1);
+            return { ...cartItem, quantity: newQuantity };
+          }
+
+          return cartItem;
+        });
+
+        return newCart;
+      });
+      return;
+    }
+
+    setCart((prevCart) => [...prevCart, { ...item, quantity: 1 }]);
   }
 
   const ctxValue = { cart, addToCart, isInCart };
