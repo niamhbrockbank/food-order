@@ -7,7 +7,7 @@ export default function Header({ openCartModal }) {
         <img src={diningImg} /> <h1>Food Order</h1>
       </span>
       <button className="button" onClick={openCartModal}>
-        Basket
+        Cart
       </button>
     </div>
   );
