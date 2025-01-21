@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { CartContext } from "../store/CartContext";
+import Button from "./UI/button";
 
 export default function ItemQuantity({ item }) {
   const { addToCart } = useContext(CartContext);
 
   return (
     <>
-      <button>-</button>
+      <Button>-</Button>
       {item.quantity}
-      <button onClick={() => addToCart(item)}>+</button>
+      <Button onClick={() => addToCart(item)}>+</Button>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import diningImg from "../assets/logo.jpg";
+import Button from "./UI/button";
 
 export default function Header({ openCartModal }) {
   return (
@@ -6,9 +7,9 @@ export default function Header({ openCartModal }) {
       <span id="title">
         <img src={diningImg} /> <h1>Food Order</h1>
       </span>
-      <button className="button" onClick={openCartModal}>
-        Cart
-      </button>
+      <Button textOnly onClick={openCartModal}>
+        Cart (0)
+      </Button>
     </div>
   );
 }

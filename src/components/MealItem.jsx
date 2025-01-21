@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../store/CartContext";
 import { currencyFormatter } from "../utils/formatting";
 import ItemQuantity from "./ItemQuantity";
+import Button from "./UI/button";
 
 export default function MealItem({ meal }) {
   const { addToCart, isInCart } = useContext(CartContext);
@@ -21,9 +22,9 @@ export default function MealItem({ meal }) {
         </div>
         <span className="meal-item-actions">
           {!alreadyInCart ? (
-            <button className="button" onClick={() => addToCart(meal)}>
+            <Button className="button" onClick={() => addToCart(meal)}>
               Add to Cart
-            </button>
+            </Button>
           ) : (
             <ItemQuantity item={{ ...meal, quantity: 2 }} />
           )}

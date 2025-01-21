@@ -2,6 +2,7 @@ import { forwardRef, useContext, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 import { CartContext } from "../store/CartContext";
 import CartItem from "./CartItem";
+import Button from "./UI/button";
 
 const CartModal = forwardRef(function CartModal({}, ref) {
   const { cart } = useContext(CartContext);
@@ -25,8 +26,8 @@ const CartModal = forwardRef(function CartModal({}, ref) {
       </li>
       <p className="cart-total">$999</p>
       <form method="dialog" className="modal-actions">
-        <button className="text-button">Close</button>
-        <button className="button">Go to Checkout</button>
+        <Button textOnly>Close</Button>
+        <Button>Go to Checkout</Button>
       </form>
     </dialog>,
     document.getElementById("modal")
