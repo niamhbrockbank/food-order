@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../store/CartContext";
+import ItemQuantity from "./ItemQuantity";
 
 export default function MealItem({ item }) {
   const { addToCart, isInCart } = useContext(CartContext);
@@ -9,7 +10,7 @@ export default function MealItem({ item }) {
 
   return (
     <article className="meal-item">
-      <img src="n/a" />
+      <img src={image} />
       <h3>{name}</h3>
       <p className="meal-item-price">${price}</p>
       <p className="meal-item-description">{description}</p>
@@ -19,7 +20,7 @@ export default function MealItem({ item }) {
             Add to Cart
           </button>
         ) : (
-          <p>1</p>
+          <ItemQuantity item={{ ...item, quantity: 2 }} />
         )}
       </span>
     </article>
