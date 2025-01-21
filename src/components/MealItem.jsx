@@ -11,10 +11,12 @@ export default function MealItem({ meal }) {
   return (
     <li className="meal-item">
       <article>
-        <img src={image} />
-        <h3>{name}</h3>
-        <p className="meal-item-price">${price}</p>
-        <p className="meal-item-description">{description}</p>
+        <div>
+          <img src={`http://localhost:3000/${image}`} alt={name} />
+          <h3>{name}</h3>
+          <p className="meal-item-price">${price}</p>
+          <p className="meal-item-description">{description}</p>
+        </div>
         <span className="meal-item-actions">
           {!alreadyInCart ? (
             <button className="button" onClick={() => addToCart(meal)}>
