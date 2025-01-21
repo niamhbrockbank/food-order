@@ -9,20 +9,22 @@ export default function MealItem({ item }) {
   const alreadyInCart = isInCart(id);
 
   return (
-    <article className="meal-item">
-      <img src={image} />
-      <h3>{name}</h3>
-      <p className="meal-item-price">${price}</p>
-      <p className="meal-item-description">{description}</p>
-      <span className="meal-item-actions">
-        {!alreadyInCart ? (
-          <button className="button" onClick={() => addToCart(item)}>
-            Add to Cart
-          </button>
-        ) : (
-          <ItemQuantity item={{ ...item, quantity: 2 }} />
-        )}
-      </span>
-    </article>
+    <li className="meal-item">
+      <article>
+        <img src={image} />
+        <h3>{name}</h3>
+        <p className="meal-item-price">${price}</p>
+        <p className="meal-item-description">{description}</p>
+        <span className="meal-item-actions">
+          {!alreadyInCart ? (
+            <button className="button" onClick={() => addToCart(item)}>
+              Add to Cart
+            </button>
+          ) : (
+            <ItemQuantity item={{ ...item, quantity: 2 }} />
+          )}
+        </span>
+      </article>
+    </li>
   );
 }
