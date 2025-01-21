@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { CartContext } from "../store/CartContext";
 import ItemQuantity from "./ItemQuantity";
 
-export default function MealItem({ item }) {
+export default function MealItem({ meal }) {
   const { addToCart, isInCart } = useContext(CartContext);
 
-  const { id, image, name, price, description } = item;
+  const { id, image, name, price, description } = meal;
   const alreadyInCart = isInCart(id);
 
   return (
@@ -17,11 +17,11 @@ export default function MealItem({ item }) {
         <p className="meal-item-description">{description}</p>
         <span className="meal-item-actions">
           {!alreadyInCart ? (
-            <button className="button" onClick={() => addToCart(item)}>
+            <button className="button" onClick={() => addToCart(meal)}>
               Add to Cart
             </button>
           ) : (
-            <ItemQuantity item={{ ...item, quantity: 2 }} />
+            <ItemQuantity item={{ ...meal, quantity: 2 }} />
           )}
         </span>
       </article>
