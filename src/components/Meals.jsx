@@ -20,10 +20,10 @@ export default function Meals() {
   }, []);
 
   return (
-    <div id="meals">
+    <ul id="meals">
       {meals.map((meal) => (
         <MealItem key={meal.id} item={meal} />
       ))}
-    </div>
+    </ul>
   );
 }
