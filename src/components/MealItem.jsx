@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { CartContext } from "../store/CartContext";
+import CartContext from "../store/CartContext";
 import { currencyFormatter } from "../utils/formatting";
 import ItemQuantity from "./ItemQuantity";
 import Button from "./UI/button";
 
 export default function MealItem({ meal }) {
-  const { addToCart, isInCart } = useContext(CartContext);
+  const { addItem, isInCart } = useContext(CartContext);
 
   const { id, image, name, price, description } = meal;
   const formattedPrice = currencyFormatter.format(price);
@@ -22,7 +22,7 @@ export default function MealItem({ meal }) {
         </div>
         <span className="meal-item-actions">
           {!alreadyInCart ? (
-            <Button className="button" onClick={() => addToCart(meal)}>
+            <Button className="button" onClick={() => addItem(meal)}>
               Add to Cart
             </Button>
           ) : (

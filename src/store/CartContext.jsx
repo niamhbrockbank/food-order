@@ -1,16 +1,17 @@
 import { createContext, useState } from "react";
 
-export const CartContext = createContext({
-  cart: [],
-  addToCart: () => {},
-  isInCart: () => {},
+const CartContext = createContext({
+  items: [],
+  addItem: (item) => {},
+  removeItem: (id) => {},
+  isInCart: (id) => {},
 });
 
-export default function CartContextProvider({ children }) {
-  const [cart, setCart] = useState([]);
+export function CartContextProvider({ children }) {
+  const [items, setItems] = useState([]);
 
   function isInCart(id) {
-    for (const item of cart) {
+    for (const item of items) {
       if (item.id === id) {
         return true;
       }
@@ -19,9 +20,9 @@ export default function CartContextProvider({ children }) {
     return false;
   }
 
-  function addToCart(item) {
+  function addItem(item) {
     if (isInCart(item.id)) {
-      setCart((prevCart) => {
+      setItems((prevCart) => {
         const newCart = prevCart.map((cartItem) => {
           if (cartItem.id === item.id) {
             const newQuantity = (cartItem.quantity = cartItem.quantity + 1);
@@ -36,12 +37,12 @@ export default function CartContextProvider({ children }) {
       return;
     }
 
-    setCart((prevCart) => [...prevCart, { ...item, quantity: 1 }]);
+    setItems((prevCart) => [...prevCart, { ...item, quantity: 1 }]);
   }
 
-  const ctxValue = { cart, addToCart, isInCart };
+  const ctxValue = { items, addItem, isInCart };
 
-  return (
-    <CartContext.Provider value={ctxValue}>{children}</CartContext.Provider>
-  );
+  return <CartContext value={ctxValue}>{children}</CartContext>;
 }
+
+export default CartContext;
