@@ -2,7 +2,7 @@ import { forwardRef, useContext, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 import CartContext from "../store/CartContext";
 import CartItem from "./CartItem";
-import Button from "./UI/button";
+import Button from "./UI/Button";
 
 const CartModal = forwardRef(function CartModal({}, ref) {
   const { items } = useContext(CartContext);

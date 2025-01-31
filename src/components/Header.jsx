@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import diningImg from "../assets/logo.jpg";
 import CartContext from "../store/CartContext";
-import Button from "./UI/button";
+import Button from "./UI/Button";
 
 export default function Header({ openCartModal }) {
   const { items } = useContext(CartContext);
