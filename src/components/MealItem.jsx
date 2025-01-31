@@ -5,11 +5,11 @@ import ItemQuantity from "./ItemQuantity";
 import Button from "./UI/button";
 
 export default function MealItem({ meal }) {
-  const { addItem, isInCart } = useContext(CartContext);
+  const { addItem } = useContext(CartContext);
 
   const { id, image, name, price, description } = meal;
   const formattedPrice = currencyFormatter.format(price);
-  const alreadyInCart = isInCart(id);
+  const alreadyInCart = false;
 
   return (
     <li className="meal-item">
