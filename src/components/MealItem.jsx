@@ -7,6 +7,10 @@ import Button from "./UI/button";
 export default function MealItem({ meal }) {
   const { addItem } = useContext(CartContext);
 
+  function handleAddMealToCart() {
+    addItem(meal);
+  }
+
   const { id, image, name, price, description } = meal;
   const formattedPrice = currencyFormatter.format(price);
   const alreadyInCart = false;
@@ -22,7 +26,7 @@ export default function MealItem({ meal }) {
         </div>
         <span className="meal-item-actions">
           {!alreadyInCart ? (
-            <Button className="button" onClick={() => addItem(meal)}>
+            <Button className="button" onClick={handleAddMealToCart}>
               Add to Cart
             </Button>
           ) : (
