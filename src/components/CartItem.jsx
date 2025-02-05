@@ -1,12 +1,22 @@
-import ItemQuantity from "./ItemQuantity";
+import { currencyFormatter } from "../utils/formatting";
 
-export default function CartItem({ item }) {
+export default function CartItem({
+  name,
+  quantity,
+  price,
+  onDecrease,
+  onIncrease,
+}) {
   return (
-    <ul className="cart-item">
-      <p>{item.name}</p>
-      <span className="cart-item-actions">
-        <ItemQuantity item={item} />
-      </span>
-    </ul>
+    <li className="cart-item">
+      <p>
+        {name} - {quantity} x {currencyFormatter.format(price)}
+      </p>
+      <p className="cart-item-actions">
+        <button onClick={onDecrease}>-</button>
+        {quantity}
+        <button onClick={onIncrease}>+</button>
+      </p>
+    </li>
   );
 }
