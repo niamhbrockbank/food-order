@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import CartContext from "../store/CartContext";
 import { currencyFormatter } from "../utils/formatting";
-import ItemQuantity from "./ItemQuantity";
 import Button from "./UI/Button";
 
 export default function MealItem({ meal }) {
@@ -30,7 +29,7 @@ export default function MealItem({ meal }) {
               Add to Cart
             </Button>
           ) : (
-            <ItemQuantity item={{ ...meal, quantity: 2 }} />
+            <p>this is in the cart</p>
           )}
         </span>
       </article>
