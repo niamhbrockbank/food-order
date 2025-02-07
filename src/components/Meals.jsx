@@ -1,4 +1,5 @@
 import useHttp from "../hooks/useHttp.js";
+import Error from "./Error.jsx";
 import MealItem from "./MealItem";
 
 const requestConfig = {};
@@ -11,7 +12,11 @@ export default function Meals() {
   } = useHttp("http://localhost:3000/meals", requestConfig, []);
 
   if (isLoading) {
-    return <p>Loading meals...</p>;
+    return <p className="center">Loading meals...</p>;
+  }
+
+  if (error) {
+    return <Error title="Failed to fetch meals" message={error} />;
   }
 
   return (
