@@ -1,1 +1,22 @@
-[{"items":[{"id":"m1","name":"Mac & Cheese","price":"8.99","description":"Creamy cheddar cheese mixed with perfectly cooked macaroni, topped with crispy breadcrumbs. A classic comfort food.","image":"images/mac-and-cheese.jpg","quantity":3}],"customer":{"name":"Niamh M Brockbank","email":"niamh.brockbank@gmail.com","street":"69 Ratcliffe Road","postal-code":"LE12 7PU","city":"Loughborough"},"id":"935.4919857896797"}]
+[
+  {
+    "items": [
+      {
+        "id": "m1",
+        "name": "Mac & Cheese",
+        "price": "8.99",
+        "description": "Creamy cheddar cheese mixed with perfectly cooked macaroni, topped with crispy breadcrumbs. A classic comfort food.",
+        "image": "images/mac-and-cheese.jpg",
+        "quantity": 3
+      }
+    ],
+    "customer": {
+      "name": "Cherry Brockbank",
+      "email": "anadress@duck.com",
+      "street": "Priory Road",
+      "postal-code": "LE12 8PP",
+      "city": "Loughborough"
+    },
+    "id": "935.4919857896797"
+  }
+]
