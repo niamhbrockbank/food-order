@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 import MealItem from "./MealItem";
 
 export default function Meals() {
-  const [meals, setMeals] = useState([]);
+  const [loadedMeals, setLoadedMeals] = useState([]);
 
   useEffect(() => {
     async function fetchMeals() {
       try {
         const response = await fetch("http://localhost:3000/meals");
-        const jsonBody = await response.json();
-        setMeals(jsonBody);
+
+        if (!response.ok) {
+          // ...
+        }
+
+        const meals = await response.json();
+        setLoadedMeals(meals);
       } catch (error) {
         console.error(error);
-        setMeals([]);
+        setLoadedMeals([]);
       }
     }
 
@@ -20,10 +25,10 @@ export default function Meals() {
   }, []);
 
   return (
-    <div id="meals">
-      {meals.map((meal) => (
-        <MealItem key={meal.id} item={meal} />
+    <ul id="meals">
+      {loadedMeals.map((meal) => (
+        <MealItem key={meal.id} meal={meal} />
       ))}
-    </div>
+    </ul>
   );
 }
