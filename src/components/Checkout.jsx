@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import useHttp from "../hooks/useHttp";
 import CartContext from "../store/CartContext";
 import UserProgressContext from "../store/UserProgressContext";
 import { currencyFormatter } from "../utils/formatting";
@@ -6,9 +7,21 @@ import Button from "./UI/Button";
 import Input from "./UI/Input";
 import Modal from "./UI/Modal";
 
+const requestConfig = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+
 export default function Checkout() {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
+
+  const { data, isLoading, error, sendRequest } = useHttp(
+    "http://localhost:3000/orders",
+    requestConfig
+  );
 
   const cartTotal = cartCtx.items.reduce(
     (total, item) => (total += item.price * item.quantity),
@@ -25,18 +38,14 @@ export default function Checkout() {
     const fd = new FormData(event.target);
     const customerData = Object.fromEntries(fd.entries());
 
-    fetch("http://localhost:3000/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    sendRequest(
+      JSON.stringify({
         order: {
           items: cartCtx.items,
           customer: customerData,
         },
-      }),
-    });
+      })
+    );
 
     event.target.reset();
   }
